@@ -3,6 +3,8 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:dynamic_form_receiver/Resources/Private/Language/locallang_db.xlf:tx_dynamicformreceiver_domain_model_receiver',
         'label' => 'receiver_name',
+        'label_alt' => 'receiver_email',
+        'label_alt_force' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -18,7 +20,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'receiver_name,receiver_email',
-        'iconfile' => 'EXT:dynamic_form_receiver/Resources/Public/Icons/tx_dynamicformreceiver_domain_model_receiver.gif'
+        'iconfile' => 'EXT:core/Resources/Public/Icons/T3Icons/content/content-elements-mailform.svg'
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, receiver_name, receiver_email',
