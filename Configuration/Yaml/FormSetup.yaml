@@ -1,0 +1,70 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formElementsDefinition:
+            Form:
+              renderingOptions:
+                partialRootPaths:
+                  1517255631: 'EXT:dynamic_form_receiver/Resources/Private/Frontend/Partials/'
+
+            DynamicFormReceiver:
+              # inherit configuration from checkbox element
+              __inheritances:
+                10: 'TYPO3.CMS.Form.prototypes.standard.formElementsDefinition.SingleSelect'
+              implementationClassName: 'AndreasKiessling\DynamicFormReceiver\Domain\Model\FormElements\SelectableReceiverOptions'
+              renderingOptions:
+                templateName: 'SingleSelect'
+
+              formEditor:
+                label: 'Selectable receiver'
+                groupSorting: 150
+                properties:
+                  pageUid: ''
+                predefinedDefaults:
+                  properties:
+                    pageUid: ''
+                    assignedVariable: 'dynamicReceiver'
+                # add new field which allows selection of a page (= link target)
+                editors:
+                  300:
+                    identifier: 'pageUid'
+                    templateName: 'Inspector-Typo3WinBrowserEditor'
+                    label: 'formEditor.elements.DynamicFormReceiver.pageUid.label'
+                    buttonLabel: 'formEditor.elements.DynamicFormReceiver.pageUid.buttonLabel'
+                    browsableType: pages
+                    # very important setting -> defines the written form definition
+                    propertyPath: 'properties.pageUid'
+                    propertyValidatorsMode: 'OR'
+                    propertyValidators:
+                      10: 'Integer'
+                      20: 'FormElementIdentifierWithinCurlyBracesExclusive'
+                  400:
+                    identifier: 'assignedVariable'
+                    templateName: 'Inspector-TextEditor'
+                    label: 'formEditor.elements.DynamicFormReceiver.assignedVariable.label'
+                    propertyPath: 'properties.assignedVariable'
+                    propertyValidators:
+                      10: 'NotEmpty'
+
+          formEditor:
+            translationFile:
+              10: 'EXT:form/Resources/Private/Language/Database.xlf'
+              1517255631: 'EXT:dynamic_form_receiver/Resources/Private/Language/Database.xlf'
+            dynamicRequireJsModules:
+              additionalViewModelModules:
+                - 'TYPO3/CMS/DynamicFormReceiver/Backend/FormEditor/ViewModel'
+            formEditorPartials:
+              FormElement-DynamicFormReceiver: 'Stage/SelectTemplate'
+      mixins:
+        formElementMixins:
+          formEmailFinisherMixin:
+            editors:
+              300:
+                propertyValidators:
+                  1505042806: 'isDynamicReceiverEmailField'
+              400:
+                propertyValidatorsMode: 'OR'
+                propertyValidators:
+                  1505042806: 'isDynamicReceiverNameField'

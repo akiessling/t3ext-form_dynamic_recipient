@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-01-29T20:41:44Z" product-name="dynamic_form_receiver">
+		<header/>
+		<body>
+			<trans-unit id="receiver_name.description">
+				<source>receiverName</source>
+			</trans-unit>
+			<trans-unit id="receiver_email.description">
+				<source>receiverEmail</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

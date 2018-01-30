@@ -1,0 +1,15 @@
+module.tx_form {
+    settings {
+        yamlConfigurations {
+            1517255631 = EXT:dynamic_form_receiver/Configuration/Yaml/FormSetup.yaml
+        }
+    }
+}
+
+plugin.tx_form {
+    settings {
+        yamlConfigurations {
+            1517255631 = EXT:dynamic_form_receiver/Configuration/Yaml/FormSetup.yaml
+        }
+    }
+}
