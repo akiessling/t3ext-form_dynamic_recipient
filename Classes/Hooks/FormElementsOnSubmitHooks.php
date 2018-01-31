@@ -31,13 +31,32 @@ class FormElementsOnSubmitHooks
 
 
             $row = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getConnectionForTable(Recipient::TABLE)
-            ->select(
-                ['uid', 'recipient_label', 'recipient_email'],
-                Recipient::TABLE, // from
-                ['uid' => $uid] // where
-            )
-            ->fetch();
+                ->getConnectionForTable(Recipient::TABLE)
+                ->select(
+                    ['*'],
+                    Recipient::TABLE, // from
+                    ['uid' => $uid], // where
+                    [], // group
+                    [], // order
+                    1   // limit
+                )
+                ->fetch();
+
+            if ($row) {
+                $GLOBALS['TSFE']->sys_page->versionOL(Recipient::TABLE, $row, true);
+                // Language overlay:
+                if (\is_array($row) && $GLOBALS['TSFE']->sys_language_contentOL) {
+                    $row = $GLOBALS['TSFE']->sys_page->getRecordOverlay(
+                        Recipient::TABLE,
+                        $row,
+                        $GLOBALS['TSFE']->sys_language_content,
+                        $GLOBALS['TSFE']->sys_language_contentOL
+                    );
+                }
+            }
+
+
+
 
             // should not happen, since the TCA field is evaluated to email
             if (!GeneralUtility::validEmail($row['recipient_email'])) {
