@@ -1,11 +1,11 @@
 <?php
-namespace AndreasKiessling\DynamicFormReceiver\Domain\Model\FormElements;
+namespace AndreasKiessling\FormDynamicRecipient\Domain\Model\FormElements;
 
-use AndreasKiessling\DynamicFormReceiver\Domain\Repository\ReceiverRepository;
+use AndreasKiessling\FormDynamicRecipient\Domain\Repository\RecipientRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
-class SelectableReceiverOptions extends \TYPO3\CMS\Form\Domain\Model\FormElements\GenericFormElement
+class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElements\GenericFormElement
 {
     /**
      * @param string $key
@@ -28,20 +28,20 @@ class SelectableReceiverOptions extends \TYPO3\CMS\Form\Domain\Model\FormElement
     protected function getOptions(int $pid) : array
     {
         $options = [];
-        foreach ($this->getReceiversFromPid($pid) as $receiver) {
-            $options[$receiver->getUid()] = $receiver->getReceiverName();
+        foreach ($this->getRecipientsFromPid($pid) as $recipient) {
+            $options[$recipient->getUid()] = $recipient->getRecipientLabel();
         }
         return $options;
     }
 
     /**
      * @param int $pid
-     * @return \AndreasKiessling\DynamicFormReceiver\Domain\Model\Receiver[]
+     * @return \AndreasKiessling\FormDynamicRecipient\Domain\Model\Recipient[]
      */
-    protected function getReceiversFromPid(int $pid) : array
+    protected function getRecipientsFromPid(int $pid) : array
     {
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $receiverRepository = $objectManager->get(ReceiverRepository::class);
-        return $receiverRepository->findInPid($pid);
+        $RecipientRepository = $objectManager->get(RecipientRepository::class);
+        return $RecipientRepository->findInPid($pid);
     }
 }

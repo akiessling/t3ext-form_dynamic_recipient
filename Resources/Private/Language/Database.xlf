@@ -3,13 +3,13 @@
 <file t3:id="1471786343" source-language="en" datatype="plaintext" original="messages" date="2016-08-21T20:15:32Z" product-name="form">
     <header/>
     <body>
-        <trans-unit id="formEditor.elements.DynamicFormReceiver.pageUid.label" xml:space="preserve">
+        <trans-unit id="formEditor.elements.FormDynamicRecipient.pageUid.label" xml:space="preserve">
             <source>Page</source>
         </trans-unit>
-        <trans-unit id="formEditor.elements.DynamicFormReceiver.pageUid.buttonLabel" xml:space="preserve">
+        <trans-unit id="formEditor.elements.FormDynamicRecipient.pageUid.buttonLabel" xml:space="preserve">
             <source>Pages</source>
         </trans-unit>
-        <trans-unit id="formEditor.elements.DynamicFormReceiver.assignedVariable.label" xml:space="preserve">
+        <trans-unit id="formEditor.elements.FormDynamicRecipient.assignedVariable.label" xml:space="preserve">
             <source>Variable to fill with the selected option</source>
         </trans-unit>
     </body>

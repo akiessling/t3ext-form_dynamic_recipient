@@ -1,6 +1,6 @@
 "use strict";
 /**
- * Module: TYPO3/CMS/FormElementDynamicFormReceiver/Backend/FormEditor/ViewModel
+ * Module: TYPO3/CMS/FormElementFormDynamicRecipient/Backend/FormEditor/ViewModel
  */
 
 define(['jquery', 'TYPO3/CMS/Form/Backend/FormEditor/StageComponent'], function ($, StageComponent) {
@@ -50,7 +50,7 @@ define(['jquery', 'TYPO3/CMS/Form/Backend/FormEditor/StageComponent'], function 
              * @subscribe view/stage/abstract/render/template/perform
              */
             getPublisherSubscriber().subscribe('view/stage/abstract/render/template/perform', function (topic, args) {
-                if (args[0].get('type') === 'DynamicFormReceiver') {
+                if (args[0].get('type') === 'FormDynamicRecipient') {
                     StageComponent.renderSelectTemplates(args[0], args[1]);
                 }
             });
@@ -66,7 +66,7 @@ define(['jquery', 'TYPO3/CMS/Form/Backend/FormEditor/StageComponent'], function 
 
                 nonCompositeNonToplevelFormElement = nonCompositeNonToplevelFormElements[i];
 
-                if (nonCompositeNonToplevelFormElement.get('type') === 'DynamicFormReceiver') {
+                if (nonCompositeNonToplevelFormElement.get('type') === 'FormDynamicRecipient') {
                     var asValue = nonCompositeNonToplevelFormElement.get('properties.assignedVariable');
                     allowedDynamicProperties.push(asValue);
                 }
@@ -82,7 +82,7 @@ define(['jquery', 'TYPO3/CMS/Form/Backend/FormEditor/StageComponent'], function 
         function _addPropertyValidators() {
 
 
-            getFormEditorApp().addPropertyValidationValidator('isDynamicReceiverEmailField', function (formElement, propertyPath) {
+            getFormEditorApp().addPropertyValidationValidator('isDynamicRecipientEmailField', function (formElement, propertyPath) {
                 var values = getDynamicRecipientAliasValues();
                 var valid = values.some(function (item) {
                     var value = formElement.get(propertyPath);
@@ -93,7 +93,7 @@ define(['jquery', 'TYPO3/CMS/Form/Backend/FormEditor/StageComponent'], function 
                     return 'invalid value';
                 }
             });
-            getFormEditorApp().addPropertyValidationValidator('isDynamicReceiverNameField', function (formElement, propertyPath) {
+            getFormEditorApp().addPropertyValidationValidator('isDynamicRecipientLabelField', function (formElement, propertyPath) {
                 var values = getDynamicRecipientAliasValues();
                 var valid = values.some(function (item) {
                     var value = formElement.get(propertyPath);

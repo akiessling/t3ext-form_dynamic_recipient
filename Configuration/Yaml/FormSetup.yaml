@@ -7,32 +7,32 @@ TYPO3:
             Form:
               renderingOptions:
                 partialRootPaths:
-                  1517255631: 'EXT:dynamic_form_receiver/Resources/Private/Frontend/Partials/'
+                  1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Frontend/Partials/'
 
-            DynamicFormReceiver:
+            FormDynamicRecipient:
               # inherit configuration from checkbox element
               __inheritances:
                 10: 'TYPO3.CMS.Form.prototypes.standard.formElementsDefinition.SingleSelect'
-              implementationClassName: 'AndreasKiessling\DynamicFormReceiver\Domain\Model\FormElements\SelectableReceiverOptions'
+              implementationClassName: 'AndreasKiessling\FormDynamicRecipient\Domain\Model\FormElements\SelectableRecipientOptions'
               renderingOptions:
                 templateName: 'SingleSelect'
 
               formEditor:
-                label: 'Selectable receiver'
+                label: 'Selectable Recipient'
                 groupSorting: 150
                 properties:
                   pageUid: ''
                 predefinedDefaults:
                   properties:
                     pageUid: ''
-                    assignedVariable: 'dynamicReceiver'
+                    assignedVariable: 'dynamicRecipient'
                 # add new field which allows selection of a page (= link target)
                 editors:
                   300:
                     identifier: 'pageUid'
                     templateName: 'Inspector-Typo3WinBrowserEditor'
-                    label: 'formEditor.elements.DynamicFormReceiver.pageUid.label'
-                    buttonLabel: 'formEditor.elements.DynamicFormReceiver.pageUid.buttonLabel'
+                    label: 'formEditor.elements.FormDynamicRecipient.pageUid.label'
+                    buttonLabel: 'formEditor.elements.FormDynamicRecipient.pageUid.buttonLabel'
                     browsableType: pages
                     # very important setting -> defines the written form definition
                     propertyPath: 'properties.pageUid'
@@ -43,7 +43,7 @@ TYPO3:
                   400:
                     identifier: 'assignedVariable'
                     templateName: 'Inspector-TextEditor'
-                    label: 'formEditor.elements.DynamicFormReceiver.assignedVariable.label'
+                    label: 'formEditor.elements.FormDynamicRecipient.assignedVariable.label'
                     propertyPath: 'properties.assignedVariable'
                     propertyValidators:
                       10: 'NotEmpty'
@@ -51,20 +51,20 @@ TYPO3:
           formEditor:
             translationFile:
               10: 'EXT:form/Resources/Private/Language/Database.xlf'
-              1517255631: 'EXT:dynamic_form_receiver/Resources/Private/Language/Database.xlf'
+              1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Language/Database.xlf'
             dynamicRequireJsModules:
               additionalViewModelModules:
-                - 'TYPO3/CMS/DynamicFormReceiver/Backend/FormEditor/ViewModel'
+                - 'TYPO3/CMS/FormDynamicRecipient/Backend/FormEditor/ViewModel'
             formEditorPartials:
-              FormElement-DynamicFormReceiver: 'Stage/SelectTemplate'
+              FormElement-FormDynamicRecipient: 'Stage/SelectTemplate'
       mixins:
         formElementMixins:
           formEmailFinisherMixin:
             editors:
               300:
                 propertyValidators:
-                  1505042806: 'isDynamicReceiverEmailField'
+                  1505042806: 'isDynamicRecipientEmailField'
               400:
                 propertyValidatorsMode: 'OR'
                 propertyValidators:
-                  1505042806: 'isDynamicReceiverNameField'
+                  1505042806: 'isDynamicRecipientLabelField'

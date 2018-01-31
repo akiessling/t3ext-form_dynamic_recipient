@@ -1,10 +1,10 @@
 <?php
-namespace AndreasKiessling\DynamicFormReceiver\Domain\Repository;
+namespace AndreasKiessling\FormDynamicRecipient\Domain\Repository;
 
 /**
- * The repository for Receivers
+ * The repository for Recipients
  */
-class ReceiverRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class RecipientRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     /**
      * @var array

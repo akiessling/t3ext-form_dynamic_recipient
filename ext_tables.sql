@@ -1,13 +1,13 @@
 #
-# Table structure for table 'tx_dynamicformreceiver_domain_model_receiver'
+# Table structure for table 'tx_formdynamicrecipient_domain_model_recipient'
 #
-CREATE TABLE tx_dynamicformreceiver_domain_model_receiver (
+CREATE TABLE tx_formdynamicrecipient_domain_model_recipient (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	receiver_name varchar(255) DEFAULT '' NOT NULL,
-	receiver_email varchar(255) DEFAULT '' NOT NULL,
+	recipient_label varchar(255) DEFAULT '' NOT NULL,
+	recipient_email varchar(255) DEFAULT '' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

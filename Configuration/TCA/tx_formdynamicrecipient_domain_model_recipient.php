@@ -1,9 +1,9 @@
 <?php
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:dynamic_form_receiver/Resources/Private/Language/locallang_db.xlf:tx_dynamicformreceiver_domain_model_receiver',
-        'label' => 'receiver_name',
-        'label_alt' => 'receiver_email',
+        'title' => 'LLL:EXT:form_dynamic_recipient/Resources/Private/Language/locallang_db.xlf:tx_formdynamicrecipient_domain_model_recipient',
+        'label' => 'recipient_label',
+        'label_alt' => 'recipient_email',
         'label_alt_force' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -19,15 +19,15 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'receiver_name,receiver_email',
+        'searchFields' => 'recipient_label,recipient_email',
         'iconfile' => 'EXT:core/Resources/Public/Icons/T3Icons/content/content-elements-mailform.svg'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, receiver_name, receiver_email',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, recipient_label, recipient_email',
     ],
     'types' => [
         '1' => [
-            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, receiver_name, receiver_email, 
+            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, recipient_label, recipient_email, 
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'
         ],
     ],
@@ -59,8 +59,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_dynamicformreceiver_domain_model_receiver',
-                'foreign_table_where' => 'AND tx_dynamicformreceiver_domain_model_receiver.pid=###CURRENT_PID### AND tx_dynamicformreceiver_domain_model_receiver.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_formdynamicrecipient_domain_model_recipient',
+                'foreign_table_where' => 'AND tx_formdynamicrecipient_domain_model_recipient.pid=###CURRENT_PID### AND tx_formdynamicrecipient_domain_model_recipient.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -90,7 +90,7 @@ return [
         ],
         'starttime' => [
             'exclude' => true,
-            'l10n_mode' => 'mergeIfNotBlank',
+            'l10n_mode' => 'exclude',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'input',
@@ -101,7 +101,7 @@ return [
         ],
         'endtime' => [
             'exclude' => true,
-            'l10n_mode' => 'mergeIfNotBlank',
+            'l10n_mode' => 'exclude',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'input',
@@ -114,18 +114,18 @@ return [
             ],
         ],
 
-        'receiver_name' => [
+        'recipient_label' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:dynamic_form_receiver/Resources/Private/Language/locallang_db.xlf:tx_dynamicformreceiver_domain_model_receiver.receiver_name',
+            'label' => 'LLL:EXT:form_dynamic_recipient/Resources/Private/Language/locallang_db.xlf:tx_formdynamicrecipient_domain_model_recipient.recipient_label',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,required'
             ],
         ],
-        'receiver_email' => [
+        'recipient_email' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:dynamic_form_receiver/Resources/Private/Language/locallang_db.xlf:tx_dynamicformreceiver_domain_model_receiver.receiver_email',
+            'label' => 'LLL:EXT:form_dynamic_recipient/Resources/Private/Language/locallang_db.xlf:tx_formdynamicrecipient_domain_model_recipient.recipient_email',
             'config' => [
                 'type' => 'input',
                 'size' => 30,

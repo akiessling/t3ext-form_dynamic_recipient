@@ -1,7 +1,7 @@
 <?php
-namespace AndreasKiessling\DynamicFormReceiver\Hooks;
+namespace AndreasKiessling\FormDynamicRecipient\Hooks;
 
-use AndreasKiessling\DynamicFormReceiver\Domain\Model\Receiver;
+use AndreasKiessling\FormDynamicRecipient\Domain\Model\Recipient;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Form\Domain\Model\Renderable\RenderableInterface;
@@ -11,21 +11,21 @@ class FormElementsOnSubmitHooks
 {
     public function afterSubmit(FormRuntime $formRuntime, RenderableInterface $renderable, $elementValue, array $requestArguments = [])
     {
-        if ($renderable->getType() === 'DynamicFormReceiver') {
+        if ($renderable->getType() === 'FormDynamicRecipient') {
             $uid = (int) $elementValue;
             if ($uid > 0) {
                 $row = GeneralUtility::makeInstance(ConnectionPool::class)
-                    ->getConnectionForTable(Receiver::TABLE)
+                    ->getConnectionForTable(Recipient::TABLE)
                     ->select(
-                        ['uid', 'receiver_name', 'receiver_email'],
-                        Receiver::TABLE, // from
+                        ['uid', 'recipient_label', 'recipient_email'],
+                        Recipient::TABLE, // from
                         [ 'uid' => $uid ] // where
                     )
                     ->fetch();
 
-                if (GeneralUtility::validEmail($row['receiver_email'])) {
-                    $formRuntime->getFormState()->setFormValue('dynamicReceiver.email', $row['receiver_email']);
-                    $formRuntime->getFormState()->setFormValue('dynamicReceiver.name', $row['receiver_name']);
+                if (GeneralUtility::validEmail($row['recipient_email'])) {
+                    $formRuntime->getFormState()->setFormValue('dynamicRecipient.email', $row['recipient_email']);
+                    $formRuntime->getFormState()->setFormValue('dynamicRecipient.name', $row['recipient_label']);
                 }
             }
         }

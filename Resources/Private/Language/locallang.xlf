@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2018-01-29T20:41:44Z" product-name="dynamic_form_receiver">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-01-29T20:41:44Z" product-name="form_dynamic_recipient">
 		<header/>
 		<body>
-			<trans-unit id="tx_dynamicformreceiver_domain_model_receiver">
-				<source>Receiver</source>
+			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient">
+				<source>Recipient</source>
 			</trans-unit>
-			<trans-unit id="tx_dynamicformreceiver_domain_model_receiver.receiver_name">
-				<source>Receiver Name</source>
+			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.recipient_label">
+				<source>Recipient Label</source>
 			</trans-unit>
-			<trans-unit id="tx_dynamicformreceiver_domain_model_receiver.receiver_email">
-				<source>Receiver Email</source>
+			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.recipient_email">
+				<source>Recipient Email</source>
 			</trans-unit>
 		</body>
 	</file>
