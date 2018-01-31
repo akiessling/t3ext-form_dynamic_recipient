@@ -29,44 +29,52 @@ class FormElementsOnSubmitHooks
                 throw new \Exception('Invalid value for recipient detected', 1517428129);
             }
 
-
-            $row = GeneralUtility::makeInstance(ConnectionPool::class)
-                ->getConnectionForTable(Recipient::TABLE)
-                ->select(
-                    ['*'],
-                    Recipient::TABLE, // from
-                    ['uid' => $uid], // where
-                    [], // group
-                    [], // order
-                    1   // limit
-                )
-                ->fetch();
-
-            if ($row) {
-                $GLOBALS['TSFE']->sys_page->versionOL(Recipient::TABLE, $row, true);
-                // Language overlay:
-                if (\is_array($row) && $GLOBALS['TSFE']->sys_language_contentOL) {
-                    $row = $GLOBALS['TSFE']->sys_page->getRecordOverlay(
-                        Recipient::TABLE,
-                        $row,
-                        $GLOBALS['TSFE']->sys_language_content,
-                        $GLOBALS['TSFE']->sys_language_contentOL
-                    );
-                }
-            }
-
-
-
+            $recipient = $this->getRecipient($uid);
 
             // should not happen, since the TCA field is evaluated to email
-            if (!GeneralUtility::validEmail($row['recipient_email'])) {
+            if (\is_array($recipient) || !GeneralUtility::validEmail($recipient['recipient_email'])) {
                 throw new \Exception('Invalid email address for recipient detected', 1517428129);
             }
 
-            $formRuntime->getFormState()->setFormValue($assignedVariable . '.email', $row['recipient_email']);
-            $formRuntime->getFormState()->setFormValue($assignedVariable . '.label', $row['recipient_label']);
+            $formRuntime->getFormState()->setFormValue($assignedVariable . '.email', $recipient['recipient_email']);
+            $formRuntime->getFormState()->setFormValue($assignedVariable . '.label', $recipient['recipient_label']);
         }
 
         return $elementValue;
+    }
+
+    /**
+     * @param $uid
+     * @return mixed
+     * @throws \UnexpectedValueException
+     */
+    private function getRecipient($uid)
+    {
+        $row = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable(Recipient::TABLE)
+            ->select(
+                ['*'],
+                Recipient::TABLE, // from
+                ['uid' => $uid], // where
+                [], // group
+                [], // order
+                1   // limit
+            )
+            ->fetch();
+
+        if ($row) {
+            $GLOBALS['TSFE']->sys_page->versionOL(Recipient::TABLE, $row, true);
+            // Language overlay:
+            if (\is_array($row) && $GLOBALS['TSFE']->sys_language_contentOL) {
+                $row = $GLOBALS['TSFE']->sys_page->getRecordOverlay(
+                    Recipient::TABLE,
+                    $row,
+                    $GLOBALS['TSFE']->sys_language_content,
+                    $GLOBALS['TSFE']->sys_language_contentOL
+                );
+            }
+        }
+
+        return $row;
     }
 }
