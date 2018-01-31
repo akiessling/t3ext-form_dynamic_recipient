@@ -11,7 +11,11 @@ class FormElementsOnSubmitHooks
 {
     public function afterSubmit(FormRuntime $formRuntime, RenderableInterface $renderable, $elementValue, array $requestArguments = [])
     {
+        /** @var \AndreasKiessling\DynamicFormRecipient\Domain\Model\FormElements\SelectableRecipientOptions $renderable */
         if ($renderable->getType() === 'FormDynamicRecipient') {
+
+            $assignedVariable = $renderable->getProperties()['assignedVariable'] ?: 'dynamicRecipient';
+
             $uid = (int) $elementValue;
             if ($uid > 0) {
                 $row = GeneralUtility::makeInstance(ConnectionPool::class)
@@ -24,8 +28,8 @@ class FormElementsOnSubmitHooks
                     ->fetch();
 
                 if (GeneralUtility::validEmail($row['recipient_email'])) {
-                    $formRuntime->getFormState()->setFormValue('dynamicRecipient.email', $row['recipient_email']);
-                    $formRuntime->getFormState()->setFormValue('dynamicRecipient.name', $row['recipient_label']);
+                    $formRuntime->getFormState()->setFormValue($assignedVariable . '.email', $row['recipient_email']);
+                    $formRuntime->getFormState()->setFormValue($assignedVariable . '.name', $row['recipient_label']);
                 }
             }
         }
