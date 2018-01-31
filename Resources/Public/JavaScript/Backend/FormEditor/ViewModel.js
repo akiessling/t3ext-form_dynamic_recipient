@@ -1,11 +1,9 @@
+"use strict";
 /**
  * Module: TYPO3/CMS/FormElementDynamicFormReceiver/Backend/FormEditor/ViewModel
  */
 
-define(['jquery',
-        'TYPO3/CMS/Form/Backend/FormEditor/StageComponent'
-        ], function ($, StageComponent) {
-        'use strict';
+define(['jquery', 'TYPO3/CMS/Form/Backend/FormEditor/StageComponent'], function ($, StageComponent) {
 
     return (function ($, StageComponent) {
 
