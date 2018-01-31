@@ -45,7 +45,7 @@ class FormElementsOnSubmitHooks
             }
 
             $formRuntime->getFormState()->setFormValue($assignedVariable . '.email', $row['recipient_email']);
-            $formRuntime->getFormState()->setFormValue($assignedVariable . '.name', $row['recipient_label']);
+            $formRuntime->getFormState()->setFormValue($assignedVariable . '.label', $row['recipient_label']);
         }
 
         return $elementValue;

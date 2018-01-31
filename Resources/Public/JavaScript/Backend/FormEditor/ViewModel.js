@@ -97,7 +97,7 @@ define(['jquery', 'TYPO3/CMS/Form/Backend/FormEditor/StageComponent'], function 
                 var values = getDynamicRecipientAliasValues();
                 var valid = values.some(function (item) {
                     var value = formElement.get(propertyPath);
-                    return value === '{' + item + '.name' + '}';
+                    return value === '{' + item + '.label' + '}';
                 });
 
                 if (valid === false) {
