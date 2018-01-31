@@ -120,7 +120,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim,required'
             ],
         ],
         'receiver_email' => [
@@ -129,7 +129,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim,required,email'
             ],
         ],
 
