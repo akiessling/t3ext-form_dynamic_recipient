@@ -3,6 +3,18 @@
 This extension adds simple database records, that can be used to generate a select field in the frontend.
 The selected option can be accessed with an assigned alias and thus be used as a dynamic recipient, e.g. in the _Recipient address_ field.
 
+## Installation
+Clone to typo3conf/ext/form_dynamic_recipient
+```
+git clone https://github.com/akiessling/t3ext-form_dynamic_recipient.git form_dynamic_recipient
+```
+
+or install via composer
+```
+composer config repositories.form_dynamic_recipient vcs https://github.com/akiessling/t3ext-form_dynamic_recipient.git
+composer require andreaskiessling/form-dynamic-recipient:dev-master
+```
+
 ## Configuration
 
 * Create database records with a label and target email address
