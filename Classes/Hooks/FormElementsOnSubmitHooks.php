@@ -32,7 +32,7 @@ class FormElementsOnSubmitHooks
             $recipient = $this->getRecipient($uid);
 
             // should not happen, since the TCA field is evaluated to email
-            if (\is_array($recipient) || !GeneralUtility::validEmail($recipient['recipient_email'])) {
+            if (!\is_array($recipient) || !GeneralUtility::validEmail($recipient['recipient_email'])) {
                 throw new \Exception('Invalid email address for recipient detected', 1517428129);
             }
 
