@@ -16,7 +16,7 @@ class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElemen
         if ($key === 'pageUid') {
             $this->setProperty('options', $this->getOptions($value));
             // automatic cache clearing with data handler, if anything in that page changes
-            if ($GLOBALS['TSFE']) {
+            if ($GLOBALS['TSFE'] instanceof \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController) {
                 $GLOBALS['TSFE']->addCacheTags(['pageId_' . $value]);
             }
             return;

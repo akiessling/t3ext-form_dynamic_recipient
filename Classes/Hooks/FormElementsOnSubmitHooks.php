@@ -38,6 +38,8 @@ class FormElementsOnSubmitHooks
 
             $formRuntime->getFormState()->setFormValue($assignedVariable . '.email', $recipient['recipient_email']);
             $formRuntime->getFormState()->setFormValue($assignedVariable . '.label', $recipient['recipient_label']);
+            // set also name as an alias for label since this is the usual name for the recipient property
+            $formRuntime->getFormState()->setFormValue($assignedVariable . '.name', $recipient['recipient_label']);
         }
 
         return $elementValue;

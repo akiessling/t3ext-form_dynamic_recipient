@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="112px" height="112px" viewBox="0 0 112 112" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M30.4762065,27 L51.4494382,56.1172475 L30.2353221,85.4966338 L11.0148781,85.4966338 L11,85.4711284 L32.2091567,56.1002439 L11.2508031,27 L30.4762065,27 Z M57.4424986,27 L69.1462921,43.248 L80.8496362,27 L100.07504,27 L79.116686,56.1002439 L100.325843,85.4711284 L100.310965,85.4966338 L81.0905206,85.4966338 L69.1462921,68.954 L57.2016143,85.4966338 L37.9811703,85.4966338 L37.9662921,85.4711284 L59.1754488,56.1002439 L38.2170952,27 L57.4424986,27 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#979797" fill="#FB8038" x="0.5" y="0.5" width="111" height="111"></rect>
+        <g id="Combined-Shape" fill="#FFFFFF">
+            <use xlink:href="#path-1"></use>
+            <use xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>
