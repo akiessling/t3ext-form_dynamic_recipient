@@ -21,7 +21,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'recipient_label,recipient_email',
-        'iconfile' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-elements-mailform.svg'
+        'iconfile' => 'EXT:form_dynamic_recipient/Resources/Public/Icons/Recipient.svg',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, recipient_label, recipient_email',
