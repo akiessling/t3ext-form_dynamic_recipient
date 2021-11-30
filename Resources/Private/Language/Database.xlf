@@ -4,7 +4,7 @@
     <header/>
     <body>
         <trans-unit id="formEditor.elements.FormDynamicRecipient.pageUid.label" xml:space="preserve">
-            <source>Page</source>
+            <source>Page containing dynamic values</source>
         </trans-unit>
         <trans-unit id="formEditor.elements.FormDynamicRecipient.pageUid.buttonLabel" xml:space="preserve">
             <source>Pages</source>
