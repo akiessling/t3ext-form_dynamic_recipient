@@ -20,5 +20,10 @@
         "psr-4": {
             "Extrameile\\FormDynamicRecipient\\": "Classes"
         }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "form_dynamic_recipient"
+        }
     }
 }
