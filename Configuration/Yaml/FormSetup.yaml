@@ -13,7 +13,7 @@ TYPO3:
               # inherit configuration from checkbox element
               __inheritances:
                 10: 'TYPO3.CMS.Form.prototypes.standard.formElementsDefinition.SingleSelect'
-              implementationClassName: 'AndreasKiessling\FormDynamicRecipient\Domain\Model\FormElements\SelectableRecipientOptions'
+              implementationClassName: 'Extrameile\FormDynamicRecipient\Domain\Model\FormElements\SelectableRecipientOptions'
               renderingOptions:
                 templateName: 'SingleSelect'
 

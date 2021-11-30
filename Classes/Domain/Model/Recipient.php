@@ -1,12 +1,15 @@
 <?php
-namespace AndreasKiessling\FormDynamicRecipient\Domain\Model;
+
+declare(strict_types=1);
+
+namespace Extrameile\FormDynamicRecipient\Domain\Model;
 
 /**
  * Recipient
  */
 class Recipient extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-    const TABLE = 'tx_formdynamicrecipient_domain_model_recipient';
+    public const TABLE = 'tx_formdynamicrecipient_domain_model_recipient';
 
     /**
      * recipientLabel

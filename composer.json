@@ -1,5 +1,5 @@
 {
-    "name": "andreaskiessling/form-dynamic-recipient",
+    "name": "extrameile/form-dynamic-recipient",
     "type": "typo3-cms-extension",
     "description": "",
     "authors": [],
@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "AndreasKiessling\\FormDynamicRecipient\\": "Classes"
+            "Extrameile\\FormDynamicRecipient\\": "Classes"
         }
     }
 }

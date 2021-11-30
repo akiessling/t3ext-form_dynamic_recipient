@@ -1,5 +1,8 @@
 <?php
-namespace AndreasKiessling\FormDynamicRecipient\Domain\Repository;
+
+declare(strict_types=1);
+
+namespace Extrameile\FormDynamicRecipient\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 

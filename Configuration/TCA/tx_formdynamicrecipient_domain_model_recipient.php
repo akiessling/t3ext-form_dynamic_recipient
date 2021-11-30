@@ -1,4 +1,5 @@
 <?php
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:form_dynamic_recipient/Resources/Private/Language/locallang_db.xlf:tx_formdynamicrecipient_domain_model_recipient',
@@ -27,7 +28,7 @@ return [
     ],
     'types' => [
         '1' => [
-            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, recipient_label, recipient_email, 
+            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, recipient_label, recipient_email,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'
         ],
     ],
