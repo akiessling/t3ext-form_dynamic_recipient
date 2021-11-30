@@ -11,8 +11,7 @@ git clone https://github.com/extrameile/form_dynamic_recipient.git
 
 or install via composer
 ```
-composer config repositories.form_dynamic_recipient vcs https://github.com/extrameile/form_dynamic_recipient.git
-composer require extrameile/form-dynamic-recipient:dev-master
+composer require extrameile/form-dynamic-recipient
 ```
 
 ## Configuration
