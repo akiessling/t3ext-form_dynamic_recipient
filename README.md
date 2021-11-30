@@ -6,13 +6,13 @@ The selected option can be accessed with an assigned alias and thus be used as a
 ## Installation
 Clone to typo3conf/ext/form_dynamic_recipient
 ```
-git clone https://github.com/akiessling/t3ext-form_dynamic_recipient.git form_dynamic_recipient
+git clone https://github.com/extrameile/form_dynamic_recipient.git
 ```
 
 or install via composer
 ```
-composer config repositories.form_dynamic_recipient vcs https://github.com/akiessling/t3ext-form_dynamic_recipient.git
-composer require andreaskiessling/form-dynamic-recipient:dev-master
+composer config repositories.form_dynamic_recipient vcs https://github.com/extrameile/form_dynamic_recipient.git
+composer require extrameile/form-dynamic-recipient:dev-master
 ```
 
 ## Configuration
