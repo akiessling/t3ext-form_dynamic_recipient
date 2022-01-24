@@ -23,9 +23,6 @@ return [
         'searchFields' => 'recipient_label,recipient_email',
         'iconfile' => 'EXT:form_dynamic_recipient/Resources/Public/Icons/Recipient.svg',
     ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, recipient_label, recipient_email',
-    ],
     'types' => [
         '1' => [
             'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, recipient_label, recipient_email,
