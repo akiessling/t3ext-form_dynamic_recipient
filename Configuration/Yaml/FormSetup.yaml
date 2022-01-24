@@ -54,7 +54,7 @@ TYPO3:
               1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Language/Database.xlf'
             dynamicRequireJsModules:
               additionalViewModelModules:
-                - 'TYPO3/CMS/FormDynamicRecipient/Backend/FormEditor/ViewModel'
+                1517255631: 'TYPO3/CMS/FormDynamicRecipient/Backend/FormEditor/ViewModel'
             formEditorPartials:
               FormElement-FormDynamicRecipient: 'Stage/SelectTemplate'
       mixins:
