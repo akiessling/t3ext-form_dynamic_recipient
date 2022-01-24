@@ -50,10 +50,6 @@ TYPO3:
                       10: 'NotEmpty'
 
           formEditor:
-            ########### @TODO Remove Backward compatibility for TYPO3 v8 LTS ###########
-            translationFile:
-              10: 'EXT:form/Resources/Private/Language/Database.xlf'
-              1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Language/Database.xlf'
             translationFiles:
               1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Language/Database.xlf'
             dynamicRequireJsModules:
