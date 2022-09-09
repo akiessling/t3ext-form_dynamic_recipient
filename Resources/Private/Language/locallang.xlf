@@ -12,6 +12,9 @@
 			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.recipient_email">
 				<source>Recipient Email</source>
 			</trans-unit>
+			<trans-unit id="validation.error.1517428129">
+				<source>Invalid value for recipient detected.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
