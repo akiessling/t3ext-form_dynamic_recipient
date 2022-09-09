@@ -18,6 +18,8 @@ class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElemen
     {
         if ($key === 'pageUid') {
             $value = (int) $value;
+            // use uid of current page if pageUid is not set
+            if ($value === 0) $value = $GLOBALS['TSFE']->id;
             $this->setProperty('options', $this->getOptions($value));
             // automatic cache clearing with data handler, if anything in that page changes
             if ($GLOBALS['TSFE'] instanceof \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController) {
