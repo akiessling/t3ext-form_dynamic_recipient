@@ -48,8 +48,7 @@ class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElemen
      */
     protected function getRecipientsFromPid(int $pid): array
     {
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $RecipientRepository = $objectManager->get(RecipientRepository::class);
+        $RecipientRepository = GeneralUtility::makeInstance(RecipientRepository::class);
         return $RecipientRepository->findInPid($pid);
     }
 }
