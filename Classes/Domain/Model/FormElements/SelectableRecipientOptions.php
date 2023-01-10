@@ -6,7 +6,6 @@ namespace Extrameile\FormDynamicRecipient\Domain\Model\FormElements;
 
 use Extrameile\FormDynamicRecipient\Domain\Repository\RecipientRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElements\GenericFormElement
 {
