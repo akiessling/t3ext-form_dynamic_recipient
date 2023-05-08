@@ -14,7 +14,13 @@
     ],
     "require": {
         "typo3/cms-core": "^10.4.0 || ^11.5.0",
-        "typo3/cms-form": "^10.4.0 || ^11.5.0"
+        "typo3/cms-extbase": "^10.4.0 || ^11.5.0",
+        "typo3/cms-form": "^10.4.0 || ^11.5.0",
+        "typo3/cms-frontend": "^10.4.0 || ^11.5.0"
+    },
+    "scripts": {
+        "phpstan": "phpstan analyse --memory-limit=1G --configuration=Build/phpstan.neon",
+        "phpstan-debug": "phpstan analyse --memory-limit=1G --configuration=Build/phpstan.neon --debug"
     },
     "autoload": {
         "psr-4": {
@@ -23,7 +29,22 @@
     },
     "extra": {
         "typo3/cms": {
-            "extension-key": "form_dynamic_recipient"
+            "extension-key": "form_dynamic_recipient",
+            "app-dir": ".Build",
+            "web-dir": ".Build/Web"
         }
+    },
+    "config": {
+        "sort-packages": true,
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin",
+        "allow-plugins": {
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10",
+        "saschaegerer/phpstan-typo3": "^1.8.4"
     }
 }
