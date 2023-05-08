@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Extrameile\FormDynamicRecipient\Hooks;
 
 use Extrameile\FormDynamicRecipient\Domain\Model\Recipient;
+use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Form\Domain\Model\Renderable\RenderableInterface;
@@ -69,17 +70,25 @@ class FormElementsOnSubmitHooks
 
         if ($row) {
             $GLOBALS['TSFE']->sys_page->versionOL(Recipient::TABLE, $row, true);
+
             // Language overlay:
-            if (\is_array($row) && $GLOBALS['TSFE']->sys_language_contentOL) {
-                $row = $GLOBALS['TSFE']->sys_page->getRecordOverlay(
+            $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
+            if (is_array($row) && $languageAspect->getContentId() > 0) {
+                $row = $this->getTsfe()->sys_page->getLanguageOverlay(
                     Recipient::TABLE,
-                    $row,
-                    $GLOBALS['TSFE']->sys_language_content,
-                    $GLOBALS['TSFE']->sys_language_contentOL
+                    $row
                 );
             }
         }
 
         return $row;
+    }
+
+    /**
+     * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
+     */
+    private function getTsfe()
+    {
+        return $GLOBALS['TSFE'];
     }
 }
