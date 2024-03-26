@@ -20,6 +20,19 @@ composer require extrameile/form-dynamic-recipient
 * add a select field of type _Selectable recipient_ to the form, configure the page to load the values from and the variable to fill with the selected value, e.g. `dynamicRecipient`
 * Configure the _Email to receiver_ finisher with `{dynamicRecipient.email}` and `{dynamicRecipient.label}` - set the form field to required, if you use {dynamicRecipient.email} as the target email address.
 
+# Running phpstan
+
+## 10.4
+```
+composer update --prefer-lowest -W
+composer run phpstan
+```
+
+## 11.5
+```
+composer update -W
+composer run phpstan
+```
 
 ## ToDos
 
