@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="EXT:form_dynamic_recipient/Resources/Private/Language/locallang_db.xlf" date="2024-04-29T13:55:06Z" product-name="form_dynamic_recipient">
+	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:form_dynamic_recipient/Resources/Private/Language/locallang.xlf" date="2024-04-29T13:54:26Z" product-name="form_dynamic_recipient">
 		<header/>
 		<body>
 			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient" resname="tx_formdynamicrecipient_domain_model_recipient">
 				<source>Recipient</source>
+				<target>Empfänger</target>
 			</trans-unit>
 			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.recipient_label" resname="tx_formdynamicrecipient_domain_model_recipient.recipient_label">
 				<source>Recipient Label</source>
+				<target>Empfänger Bezeichnung</target>
 			</trans-unit>
 			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.recipient_email" resname="tx_formdynamicrecipient_domain_model_recipient.recipient_email">
 				<source>Recipient Email</source>
+				<target>Empfänger E-Mail</target>
+			</trans-unit>
+			<trans-unit id="validation.error.1517428129" resname="validation.error.1517428129">
+				<source>Invalid value for recipient detected.</source>
+				<target>Ungültiger Empfänger wurde gewählt.</target>
 			</trans-unit>
 		</body>
 	</file>

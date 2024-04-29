@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2018-01-29T20:41:44Z" product-name="form_dynamic_recipient">
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:form_dynamic_recipient/Resources/Private/Language/locallang.xlf" date="2024-04-29T13:54:26Z" product-name="form_dynamic_recipient">
 		<header/>
 		<body>
-			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient">
+			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient" resname="tx_formdynamicrecipient_domain_model_recipient">
 				<source>Recipient</source>
 			</trans-unit>
-			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.recipient_label">
+			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.recipient_label" resname="tx_formdynamicrecipient_domain_model_recipient.recipient_label">
 				<source>Recipient Label</source>
 			</trans-unit>
-			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.recipient_email">
+			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.recipient_email" resname="tx_formdynamicrecipient_domain_model_recipient.recipient_email">
 				<source>Recipient Email</source>
 			</trans-unit>
-			<trans-unit id="validation.error.1517428129">
+			<trans-unit id="validation.error.1517428129" resname="validation.error.1517428129">
 				<source>Invalid value for recipient detected.</source>
 			</trans-unit>
 		</body>
