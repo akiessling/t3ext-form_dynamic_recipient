@@ -45,16 +45,14 @@ class FormElementsOnSubmitHooks
                 // set also name as an alias for label since this is the usual name for the recipient property
                 $formRuntime->getFormState()->setFormValue($assignedVariable . '.name', $recipient['recipient_label']);
             } elseif ($uid > 0 && !array_key_exists($uid, $renderable->getProperties()['options'])) {
-                // throw new \Exception('Invalid value for recipient detected', 1517428129);
                 $processingRule = $renderable->getRootForm()->getProcessingRule($renderable->getIdentifier());
                 $processingRule->getProcessingMessages()->addError(
-                    GeneralUtility::makeInstance(ObjectManager::class)
-                    ->get(
+                    GeneralUtility::makeInstance(
                         Error::class,
-                        TranslationService::getInstance()->translate('validation.error.1517428129', null, 'EXT:form_dynamic_recipient/Resources/Private/Language/locallang.xlf'),
+                        GeneralUtility::makeInstance(TranslationService::class)->translate('validation.error.1517428129', null, 'EXT:form_dynamic_recipient/Resources/Private/Language/locallang.xlf'),
                         1517428129
-                        )
-                    );
+                    )
+                );
             }
         }
 
@@ -78,7 +76,7 @@ class FormElementsOnSubmitHooks
                 [], // order
                 1   // limit
             )
-            ->fetch();
+            ->fetchAssociative();
 
         if ($row) {
             $GLOBALS['TSFE']->sys_page->versionOL(Recipient::TABLE, $row, true);
