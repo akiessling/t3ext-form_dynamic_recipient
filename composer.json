@@ -13,10 +13,8 @@
         }
     ],
     "require": {
-        "typo3/cms-core": "^10.4.0 || ^11.5.0",
-        "typo3/cms-extbase": "^10.4.0 || ^11.5.0",
-        "typo3/cms-form": "^10.4.0 || ^11.5.0",
-        "typo3/cms-frontend": "^10.4.0 || ^11.5.0"
+        "typo3/cms-core": "^12.1",
+        "typo3/cms-form": "^12.1"
     },
     "scripts": {
         "phpstan": "phpstan analyse --memory-limit=1G --configuration=Build/phpstan.neon",
