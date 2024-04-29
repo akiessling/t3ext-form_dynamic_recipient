@@ -5,14 +5,14 @@ $EM_CONF[$_EXTKEY] = [
     'description' => 'Adds new form select type, which shows recipient records of a given page. This information can be used as dynamic recipient for the form data.',
     'category' => 'plugin',
     'author' => 'Andreas Kießling',
-    'author_email' => 'kiessling@extrameile-gehen.de',
-    'author_company' => 'Extrameile GmbH',
+    'author_email' => 'kontakt@kiessling.tech',
+    'author_company' => 'kiessling.tech',
     'state' => 'stable',
-    'version' => '2.0.0',
+    'version' => '3.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '10.4.0-11.5.99',
-            'form' => '10.4.0-11.5.99',
+            'typo3' => '12.1.0-12.4.99',
+            'form' => '12.1.0-12.4.99',
         ],
     ],
 ];

@@ -13,6 +13,7 @@ class RecipientRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     /**
      * @var array
+     * @phpstan-ignore-next-line
      */
     protected $defaultOrderings = [
         'sorting' => QueryInterface::ORDER_ASCENDING

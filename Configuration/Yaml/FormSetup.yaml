@@ -1,70 +1,67 @@
-TYPO3:
-  CMS:
-    Form:
-      prototypes:
-        standard:
-          formElementsDefinition:
-            Form:
-              renderingOptions:
-                partialRootPaths:
-                  1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Frontend/Partials/'
+prototypes:
+  standard:
+    formElementsDefinition:
+      Form:
+        renderingOptions:
+          partialRootPaths:
+            1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Frontend/Partials/'
 
-            FormDynamicRecipient:
-              # inherit configuration from checkbox element
-              __inheritances:
-                10: 'TYPO3.CMS.Form.prototypes.standard.formElementsDefinition.SingleSelect'
-              implementationClassName: 'Extrameile\FormDynamicRecipient\Domain\Model\FormElements\SelectableRecipientOptions'
-              renderingOptions:
-                templateName: 'SingleSelect'
+      FormDynamicRecipient:
+        # inherit configuration from checkbox element
+        __inheritances:
+          10: 'prototypes.standard.formElementsDefinition.SingleSelect'
+        implementationClassName: 'Extrameile\FormDynamicRecipient\Domain\Model\FormElements\SelectableRecipientOptions'
+        renderingOptions:
+          templateName: 'SingleSelect'
 
-              formEditor:
-                label: 'Selectable Recipient'
-                groupSorting: 150
-                properties:
-                  pageUid: ''
-                predefinedDefaults:
-                  properties:
-                    pageUid: ''
-                    assignedVariable: 'dynamicRecipient'
-                # add new field which allows selection of a page (= link target)
-                editors:
-                  300:
-                    identifier: 'pageUid'
-                    templateName: 'Inspector-Typo3WinBrowserEditor'
-                    label: 'formEditor.elements.FormDynamicRecipient.pageUid.label'
-                    buttonLabel: 'formEditor.elements.FormDynamicRecipient.pageUid.buttonLabel'
-                    browsableType: pages
-                    iconIdentifier: apps-pagetree-page-default
-                    # very important setting -> defines the written form definition
-                    propertyPath: 'properties.pageUid'
-                    propertyValidatorsMode: 'OR'
-                    propertyValidators:
-                      10: 'Integer'
-                      20: 'FormElementIdentifierWithinCurlyBracesExclusive'
-                  400:
-                    identifier: 'assignedVariable'
-                    templateName: 'Inspector-TextEditor'
-                    label: 'formEditor.elements.FormDynamicRecipient.assignedVariable.label'
-                    propertyPath: 'properties.assignedVariable'
-                    propertyValidators:
-                      10: 'NotEmpty'
+        formEditor:
+          label: 'Selectable Recipient'
+          groupSorting: 150
+          properties:
+            pageUid: ''
+          predefinedDefaults:
+            properties:
+              pageUid: ''
+              assignedVariable: 'dynamicRecipient'
+          # add new field which allows selection of a page (= link target)
+          editors:
+            300:
+              identifier: 'pageUid'
+              templateName: 'Inspector-Typo3WinBrowserEditor'
+              label: 'formEditor.elements.FormDynamicRecipient.pageUid.label'
+              buttonLabel: 'formEditor.elements.FormDynamicRecipient.pageUid.buttonLabel'
+              browsableType: pages
+              iconIdentifier: apps-pagetree-page-default
+              # very important setting -> defines the written form definition
+              propertyPath: 'properties.pageUid'
+              propertyValidatorsMode: 'OR'
+              propertyValidators:
+                10: 'Integer'
+                20: 'FormElementIdentifierWithinCurlyBracesExclusive'
+            400:
+              identifier: 'assignedVariable'
+              templateName: 'Inspector-TextEditor'
+              label: 'formEditor.elements.FormDynamicRecipient.assignedVariable.label'
+              propertyPath: 'properties.assignedVariable'
+              propertyValidators:
+                10: 'NotEmpty'
 
-          formEditor:
-            translationFiles:
-              1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Language/Database.xlf'
-            dynamicRequireJsModules:
-              additionalViewModelModules:
-                1517255631: 'TYPO3/CMS/FormDynamicRecipient/Backend/FormEditor/ViewModel'
-            formEditorPartials:
-              FormElement-FormDynamicRecipient: 'Stage/SelectTemplate'
-      mixins:
-        formElementMixins:
-          formEmailFinisherMixin:
-            editors:
-              300:
-                propertyValidators:
-                  1505042806: 'isDynamicRecipientEmailField'
-              400:
-                propertyValidatorsMode: 'OR'
-                propertyValidators:
-                  1505042806: 'isDynamicRecipientLabelField'
+    formEditor:
+      translationFiles:
+        1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Language/Database.xlf'
+      dynamicRequireJsModules:
+        additionalViewModelModules:
+          1517255631: 'TYPO3/CMS/FormDynamicRecipient/Backend/FormEditor/ViewModel'
+      formEditorPartials:
+        FormElement-FormDynamicRecipient: 'Stage/SelectTemplate'
+mixins:
+  formElementMixins:
+    formEmailFinisherMixin:
+      editors:
+        300:
+          propertyValidators:
+            1505042806: 'isDynamicRecipientEmailField'
+        400:
+          propertyValidatorsMode: 'OR'
+          propertyValidators:
+            1505042806: 'isDynamicRecipientLabelField'

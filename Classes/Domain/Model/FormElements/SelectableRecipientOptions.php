@@ -6,7 +6,6 @@ namespace Extrameile\FormDynamicRecipient\Domain\Model\FormElements;
 
 use Extrameile\FormDynamicRecipient\Domain\Repository\RecipientRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElements\GenericFormElement
 {
@@ -50,8 +49,7 @@ class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElemen
      */
     protected function getRecipientsFromPid(int $pid): array
     {
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $RecipientRepository = $objectManager->get(RecipientRepository::class);
+        $RecipientRepository = GeneralUtility::makeInstance(RecipientRepository::class);
         return $RecipientRepository->findInPid($pid);
     }
 }
