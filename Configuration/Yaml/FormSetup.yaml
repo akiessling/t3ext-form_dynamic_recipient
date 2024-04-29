@@ -29,6 +29,7 @@ prototypes:
               identifier: 'pageUid'
               templateName: 'Inspector-Typo3WinBrowserEditor'
               label: 'formEditor.elements.FormDynamicRecipient.pageUid.label'
+              fieldExplanationText: 'formEditor.elements.FormDynamicRecipient.pageUid.fieldExplanationText'
               buttonLabel: 'formEditor.elements.FormDynamicRecipient.pageUid.buttonLabel'
               browsableType: pages
               iconIdentifier: apps-pagetree-page-default
@@ -36,15 +37,8 @@ prototypes:
               propertyPath: 'properties.pageUid'
               propertyValidatorsMode: 'OR'
               propertyValidators:
-                10: 'Integer'
+                10: 'IntegerOrEmpty'
                 20: 'FormElementIdentifierWithinCurlyBracesExclusive'
-            400:
-              identifier: 'assignedVariable'
-              templateName: 'Inspector-TextEditor'
-              label: 'formEditor.elements.FormDynamicRecipient.assignedVariable.label'
-              propertyPath: 'properties.assignedVariable'
-              propertyValidators:
-                10: 'NotEmpty'
 
     formEditor:
       translationFiles:

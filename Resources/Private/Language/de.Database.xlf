@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="EXT:form_dynamic_recipient/Resources/Private/Language/Database.xlf" date="2024-04-29T14:07:59Z" product-name="form_dynamic_recipient">
+	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:form_dynamic_recipient/Resources/Private/Language/Database.xlf" date="2024-04-29T14:07:59Z" product-name="form_dynamic_recipient">
 		<header/>
 		<body>
 			<trans-unit id="formEditor.elements.FormDynamicRecipient.pageUid.label" resname="formEditor.elements.FormDynamicRecipient.pageUid.label">
 				<source>Page containing dynamic values</source>
+				<target>Seite mit Empfänger-Datensätzen</target>
 			</trans-unit>
 			<trans-unit id="formEditor.elements.FormDynamicRecipient.pageUid.fieldExplanationText" resname="formEditor.elements.FormDynamicRecipient.pageUid.fieldExplanationText">
 				<source>Leave blank to load recipients from the page where the plugin is inserted</source>
+				<target>Leer lassen, um die Datensätze von der aktuellen Seite mit dem Formular-Plugin zu laden</target>
 			</trans-unit>
 			<trans-unit id="formEditor.elements.FormDynamicRecipient.pageUid.buttonLabel" resname="formEditor.elements.FormDynamicRecipient.pageUid.buttonLabel">
 				<source>Page</source>
+				<target>Seite</target>
 			</trans-unit>
 			<trans-unit id="formEditor.elements.FormDynamicRecipient.assignedVariable.label" resname="formEditor.elements.FormDynamicRecipient.assignedVariable.label">
 				<source>Variable to fill with the selected option</source>
+				<target>Gewählte Option in diese Variable laden</target>
 			</trans-unit>
 		</body>
 	</file>

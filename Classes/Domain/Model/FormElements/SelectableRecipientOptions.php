@@ -15,10 +15,14 @@ class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElemen
      */
     public function setProperty(string $key, $value)
     {
+
         if ($key === 'pageUid') {
             $value = (int) $value;
             // use uid of current page if pageUid is not set
-            if ($value === 0) $value = $GLOBALS['TSFE']->id;
+            if ($value === 0) {
+                $pageArguments = $GLOBALS['TYPO3_REQUEST']->getAttribute('routing');
+                $value = $pageArguments->getPageId();
+            }
             $this->setProperty('options', $this->getOptions($value));
             // automatic cache clearing with data handler, if anything in that page changes
             if ($GLOBALS['TSFE'] instanceof \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController) {
