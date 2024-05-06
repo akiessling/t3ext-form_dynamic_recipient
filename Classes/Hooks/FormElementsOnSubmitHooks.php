@@ -8,11 +8,11 @@ use Extrameile\FormDynamicRecipient\Domain\Model\Recipient;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Validation\Error;
 use TYPO3\CMS\Form\Domain\Model\Renderable\RenderableInterface;
 use TYPO3\CMS\Form\Domain\Runtime\FormRuntime;
 use TYPO3\CMS\Form\Service\TranslationService;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class FormElementsOnSubmitHooks
 {
@@ -79,7 +79,7 @@ class FormElementsOnSubmitHooks
             ->fetchAssociative();
 
         if ($row) {
-            $GLOBALS['TSFE']->sys_page->versionOL(Recipient::TABLE, $row, true);
+            $this->getTsfe()->sys_page->versionOL(Recipient::TABLE, $row, true);
 
             // Language overlay:
             $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
@@ -94,10 +94,7 @@ class FormElementsOnSubmitHooks
         return $row;
     }
 
-    /**
-     * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
-     */
-    private function getTsfe()
+    private function getTsfe(): TypoScriptFrontendController
     {
         return $GLOBALS['TSFE'];
     }

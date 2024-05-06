@@ -8,7 +8,6 @@ return [
         'label_alt_force' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'sortby' => 'sorting',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
@@ -22,6 +21,9 @@ return [
         ],
         'searchFields' => 'recipient_label,recipient_email',
         'iconfile' => 'EXT:form_dynamic_recipient/Resources/Public/Icons/Recipient.svg',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'types' => [
         '1' => [
@@ -34,17 +36,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ]
-                ],
-                'default' => 0,
+                'type' => 'language',
             ],
         ],
         'l10n_parent' => [
@@ -54,7 +46,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
                 'foreign_table' => 'tx_formdynamicrecipient_domain_model_recipient',
                 'foreign_table_where' => 'AND tx_formdynamicrecipient_domain_model_recipient.pid=###CURRENT_PID### AND tx_formdynamicrecipient_domain_model_recipient.sys_language_uid IN (-1,0)',
@@ -79,9 +71,10 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
-                    ]
+                    [
+                        'value' => 1,
+                        'label' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled',
+                    ],
                 ],
             ],
         ],
@@ -90,11 +83,10 @@ return [
             'l10n_mode' => 'exclude',
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
-                'type' => 'input',
+                'type' => 'datetime',
+                'format' => 'datetime',
                 'size' => 13,
-                'eval' => 'datetime',
                 'default' => 0,
-                'renderType' => 'inputDateTime',
             ],
         ],
         'endtime' => [
@@ -102,11 +94,10 @@ return [
             'l10n_mode' => 'exclude',
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
-                'type' => 'input',
+                'type' => 'datetime',
+                'format' => 'datetime',
                 'size' => 13,
-                'eval' => 'datetime',
                 'default' => 0,
-                'renderType' => 'inputDateTime',
                 'range' => [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038)
                 ],
@@ -119,16 +110,18 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'recipient_email' => [
             'exclude' => true,
             'label' => 'LLL:EXT:form_dynamic_recipient/Resources/Private/Language/locallang_db.xlf:tx_formdynamicrecipient_domain_model_recipient.recipient_email',
             'config' => [
-                'type' => 'input',
+                'type' => 'email',
                 'size' => 30,
-                'eval' => 'trim,required,email'
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
 
