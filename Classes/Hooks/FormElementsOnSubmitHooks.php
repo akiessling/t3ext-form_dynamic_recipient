@@ -7,15 +7,21 @@ namespace AndreasKiessling\FormDynamicRecipient\Hooks;
 use AndreasKiessling\FormDynamicRecipient\Domain\Model\Recipient;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Validation\Error;
 use TYPO3\CMS\Form\Domain\Model\Renderable\RenderableInterface;
 use TYPO3\CMS\Form\Domain\Runtime\FormRuntime;
 use TYPO3\CMS\Form\Service\TranslationService;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class FormElementsOnSubmitHooks
 {
+    private PageRepository $pageRepository;
+
+    public function __construct() {
+        $this->pageRepository = GeneralUtility::makeInstance(PageRepository::class);
+    }
+
     /**
      * @param \TYPO3\CMS\Form\Domain\Runtime\FormRuntime $formRuntime
      * @param \TYPO3\CMS\Form\Domain\Model\Renderable\RenderableInterface $renderable
@@ -79,12 +85,12 @@ class FormElementsOnSubmitHooks
             ->fetchAssociative();
 
         if ($row) {
-            $this->getTsfe()->sys_page->versionOL(Recipient::TABLE, $row, true);
+            $this->pageRepository->versionOL(Recipient::TABLE, $row, true);
 
             // Language overlay:
             $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
             if (is_array($row) && $languageAspect->getContentId() > 0) {
-                $row = $this->getTsfe()->sys_page->getLanguageOverlay(
+                $row = $this->pageRepository->getLanguageOverlay(
                     Recipient::TABLE,
                     $row
                 );
@@ -92,10 +98,5 @@ class FormElementsOnSubmitHooks
         }
 
         return $row;
-    }
-
-    private function getTsfe(): TypoScriptFrontendController
-    {
-        return $GLOBALS['TSFE'];
     }
 }
