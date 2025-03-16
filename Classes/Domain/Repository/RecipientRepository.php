@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Extrameile\FormDynamicRecipient\Domain\Repository;
+namespace AndreasKiessling\FormDynamicRecipient\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 

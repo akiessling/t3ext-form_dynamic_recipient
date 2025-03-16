@@ -9,7 +9,7 @@ prototypes:
       FormDynamicRecipient:
         __inheritances:
           10: 'prototypes.standard.formElementsDefinition.SingleSelect'
-        implementationClassName: 'Extrameile\FormDynamicRecipient\Domain\Model\FormElements\SelectableRecipientOptions'
+        implementationClassName: 'AndreasKiessling\FormDynamicRecipient\Domain\Model\FormElements\SelectableRecipientOptions'
         renderingOptions:
           templateName: 'SingleSelect'
 
@@ -42,7 +42,7 @@ prototypes:
     formEditor:
       dynamicJavaScriptModules:
         additionalViewModelModules:
-          1517255631: '@extrameile/form-dynamic-recipient/Backend/FormEditor/ViewModel.js'
+          1517255631: '@andreaskiessling/form-dynamic-recipient/Backend/FormEditor/ViewModel.js'
       translationFiles:
         1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Language/Database.xlf'
       formEditorPartials:

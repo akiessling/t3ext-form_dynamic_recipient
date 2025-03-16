@@ -1,5 +1,5 @@
 {
-    "name": "extrameile/form-dynamic-recipient",
+    "name": "andreaskiessling/form-dynamic-recipient",
     "type": "typo3-cms-extension",
     "description": "Adds new form select type, which shows recipient records of a given page. This information can be used as dynamic recipient for the form data.",
     "homepage": "https://kiessling.tech",
@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Extrameile\\FormDynamicRecipient\\": "Classes"
+            "AndreasKiessling\\FormDynamicRecipient\\": "Classes"
         }
     },
     "extra": {

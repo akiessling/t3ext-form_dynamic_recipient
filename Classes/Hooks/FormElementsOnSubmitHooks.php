@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Extrameile\FormDynamicRecipient\Hooks;
+namespace AndreasKiessling\FormDynamicRecipient\Hooks;
 
-use Extrameile\FormDynamicRecipient\Domain\Model\Recipient;
+use AndreasKiessling\FormDynamicRecipient\Domain\Model\Recipient;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -26,7 +26,7 @@ class FormElementsOnSubmitHooks
      */
     public function afterSubmit(FormRuntime $formRuntime, RenderableInterface $renderable, $elementValue, array $requestArguments = [])
     {
-        /** @var \Extrameile\FormDynamicRecipient\Domain\Model\FormElements\SelectableRecipientOptions $renderable */
+        /** @var \AndreasKiessling\FormDynamicRecipient\Domain\Model\FormElements\SelectableRecipientOptions $renderable */
         if ($renderable->getType() === 'FormDynamicRecipient') {
             $assignedVariable = $renderable->getProperties()['assignedVariable'] ?: 'dynamicRecipient';
 

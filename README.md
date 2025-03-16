@@ -5,7 +5,7 @@ The selected option can be accessed with an assigned alias and thus be used as a
 
 ## Installation via composer
 ```
-composer require extrameile/form-dynamic-recipient
+composer require andreaskiessling/form-dynamic-recipient
 ```
 
 ## Configuration

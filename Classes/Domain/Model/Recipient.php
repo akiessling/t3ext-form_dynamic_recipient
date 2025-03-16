@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Extrameile\FormDynamicRecipient\Domain\Model;
+namespace AndreasKiessling\FormDynamicRecipient\Domain\Model;
 
 /**
  * Recipient

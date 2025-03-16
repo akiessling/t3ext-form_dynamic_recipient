@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Extrameile\FormDynamicRecipient\Domain\Model\FormElements;
+namespace AndreasKiessling\FormDynamicRecipient\Domain\Model\FormElements;
 
-use Extrameile\FormDynamicRecipient\Domain\Repository\RecipientRepository;
+use AndreasKiessling\FormDynamicRecipient\Domain\Repository\RecipientRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElements\GenericFormElement
@@ -49,7 +49,7 @@ class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElemen
 
     /**
      * @param int $pid
-     * @return \Extrameile\FormDynamicRecipient\Domain\Model\Recipient[]
+     * @return \AndreasKiessling\FormDynamicRecipient\Domain\Model\Recipient[]
      */
     protected function getRecipientsFromPid(int $pid): array
     {

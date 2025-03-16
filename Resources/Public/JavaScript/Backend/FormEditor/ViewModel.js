@@ -1,5 +1,5 @@
 /**
- * Module: @extrameile/form-dynamic-recipient/Backend/FormEditor/ViewModel.js
+ * Module: @andreaskiessling/form-dynamic-recipient/Backend/FormEditor/ViewModel.js
  */
 import * as Helper from '@typo3/form/backend/form-editor/helper.js';
 
