@@ -7,7 +7,6 @@ prototypes:
             1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Frontend/Partials/'
 
       FormDynamicRecipient:
-        # inherit configuration from checkbox element
         __inheritances:
           10: 'prototypes.standard.formElementsDefinition.SingleSelect'
         implementationClassName: 'Extrameile\FormDynamicRecipient\Domain\Model\FormElements\SelectableRecipientOptions'
@@ -41,21 +40,10 @@ prototypes:
                 20: 'FormElementIdentifierWithinCurlyBracesExclusive'
 
     formEditor:
+      dynamicJavaScriptModules:
+        additionalViewModelModules:
+          1517255631: '@extrameile/form-dynamic-recipient/Backend/FormEditor/ViewModel.js'
       translationFiles:
         1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Language/Database.xlf'
-      dynamicRequireJsModules:
-        additionalViewModelModules:
-          1517255631: 'TYPO3/CMS/FormDynamicRecipient/Backend/FormEditor/ViewModel'
       formEditorPartials:
         FormElement-FormDynamicRecipient: 'Stage/SelectTemplate'
-mixins:
-  formElementMixins:
-    formEmailFinisherMixin:
-      editors:
-        300:
-          propertyValidators:
-            1505042806: 'isDynamicRecipientEmailField'
-        400:
-          propertyValidatorsMode: 'OR'
-          propertyValidators:
-            1505042806: 'isDynamicRecipientLabelField'
