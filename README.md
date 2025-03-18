@@ -11,7 +11,7 @@ composer require andreaskiessling/form-dynamic-recipient
 ## Configuration
 
 * Create database records with a label and target email address
-* add a select field of type _Selectable recipient_ to the form, configure the page to load the values from and the variable to fill with the selected value, e.g. `dynamicRecipient`
+* add a select field of type _Selectable recipient_ to the form, configure the page to load the values from and the variable to fill with the selected value: `dynamicRecipient` is preset when adding the field and is not configurable in the form manager, only directly in the YAML file
 * New with version 3.x: leave the page field empty in the form yaml to load the recipients from the page with the form plugin
 * Configure the _Email to receiver_ finisher with `{dynamicRecipient.email}` and `{dynamicRecipient.label}` - set the form field to required, if you use {dynamicRecipient.email} as the target email address.
 
