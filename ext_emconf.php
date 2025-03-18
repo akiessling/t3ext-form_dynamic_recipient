@@ -8,11 +8,11 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'kontakt@kiessling.tech',
     'author_company' => 'kiessling.tech',
     'state' => 'stable',
-    'version' => '3.1.0',
+    'version' => '4.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.1.0-12.4.99',
-            'form' => '12.1.0-12.4.99',
+            'typo3' => '13.4.0-13.4.99',
+            'form' => '12.4.0-13.4.99',
         ],
     ],
 ];
