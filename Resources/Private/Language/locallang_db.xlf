@@ -12,6 +12,12 @@
 			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.recipient_email" resname="tx_formdynamicrecipient_domain_model_recipient.recipient_email">
 				<source>Recipient Email</source>
 			</trans-unit>
+			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.is_optgroup" resname="tx_formdynamicrecipient_domain_model_recipient.is_optgroup">
+				<source>Is Optgroup</source>
+			</trans-unit>
+			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.is_optgroup" resname="tx_formdynamicrecipient_domain_model_recipient.is_optgroup.description">
+				<source>Turn this option into an optgroup</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

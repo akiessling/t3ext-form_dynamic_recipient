@@ -11,10 +11,10 @@ prototypes:
           10: 'prototypes.standard.formElementsDefinition.SingleSelect'
         implementationClassName: 'AndreasKiessling\FormDynamicRecipient\Domain\Model\FormElements\SelectableRecipientOptions'
         renderingOptions:
-          templateName: 'SingleSelect'
+                templateName: 'DynamicRecipient'
 
         formEditor:
-          label: 'Selectable Recipient'
+          label: 'formEditor.elements.FormDynamicRecipient.label'
           groupSorting: 150
           properties:
             pageUid: ''

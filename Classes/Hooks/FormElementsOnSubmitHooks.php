@@ -38,9 +38,14 @@ class FormElementsOnSubmitHooks
 
             $uid = (int) $elementValue;
 
-            if ($uid > 0 && array_key_exists($uid, $renderable->getProperties()['options'])) {
+            if ($uid > 0 && $this->isRecipientValid($uid, $renderable->getProperties()['options'])) {
                 $recipient = $this->getRecipient($uid);
                 
+                // the uid might belong to an optgroup, this should not happen and will trigger an error
+                if ($recipient['is_optgroup']) {
+                    throw new \Exception('Invalid recipient option detected', 1751829072);
+                }
+                // the uid might belong to a recipient without an email address, this should not happen and will trigger an error
                 // should not happen, since the TCA field is evaluated to email
                 if (!\is_array($recipient) || !GeneralUtility::validEmail($recipient['recipient_email'])) {
                     throw new \Exception('Invalid email address for recipient detected', 1517428129);
@@ -50,7 +55,7 @@ class FormElementsOnSubmitHooks
                 $formRuntime->getFormState()->setFormValue($assignedVariable . '.label', $recipient['recipient_label']);
                 // set also name as an alias for label since this is the usual name for the recipient property
                 $formRuntime->getFormState()->setFormValue($assignedVariable . '.name', $recipient['recipient_label']);
-            } elseif ($uid > 0 && !array_key_exists($uid, $renderable->getProperties()['options'])) {
+            } elseif ($uid > 0 && $this->isRecipientValid($uid, $renderable->getProperties()['options'])) {
                 $processingRule = $renderable->getRootForm()->getProcessingRule($renderable->getIdentifier());
                 $processingRule->getProcessingMessages()->addError(
                     GeneralUtility::makeInstance(
@@ -98,5 +103,17 @@ class FormElementsOnSubmitHooks
         }
 
         return $row;
+    }
+    /**
+     * @param int $uid
+     * @param Recipient[] $recipients
+     * @return bool
+     */
+    public function isRecipientValid(int $uid, array $recipients = []): bool
+    {
+        $matchingRecipients = array_filter($recipients, function ($recipient) use ($uid): bool {
+            return $recipient->getUid() === $uid;
+        });
+        return !empty($matchingRecipients);
     }
 }

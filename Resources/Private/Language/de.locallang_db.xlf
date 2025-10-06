@@ -15,6 +15,14 @@
 				<source>Recipient Email</source>
 				<target>Empfänger E-Mail</target>
 			</trans-unit>
+			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.is_optgroup" resname="tx_formdynamicrecipient_domain_model_recipient.is_optgroup">
+				<source>Is Optgroup</source>
+				<target>Ist Optionsgruppe</target>
+			</trans-unit>
+			<trans-unit id="tx_formdynamicrecipient_domain_model_recipient.is_optgroup.description" resname="tx_formdynamicrecipient_domain_model_recipient.is_optgroup.description">
+				<source>Turn this option into an optgroup</source>
+				<target>Diese Option in eine Optionsgruppe umwandeln</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

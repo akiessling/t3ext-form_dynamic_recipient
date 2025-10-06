@@ -1,0 +1,62 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<formvh:renderRenderable renderable="{element}">
+    <f:render partial="Field/Field" arguments="{element: element}" contentAs="elementContent">
+        <f:if condition="{element.properties.prependOptionLabel}">
+            <f:then>
+                <f:form.select
+                        property="{element.identifier}"
+                        id="{element.uniqueIdentifier}"
+                        class="{element.properties.elementClassAttribute} form-control"
+                        errorClass="{element.properties.elementErrorClassAttribute}"
+                        additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
+                        prependOptionLabel="{formvh:translateElementProperty(element: element, property: 'prependOptionLabel')}"
+                        prependOptionValue="{formvh:translateElementProperty(element: element, property: 'prependOptionValue')}"
+                >
+                    <f:render section="options" arguments="{options: element.properties.options}" />
+                </f:form.select>
+            </f:then>
+            <f:else>
+                <f:form.select
+                        property="{element.identifier}"
+                        id="{element.uniqueIdentifier}"
+                        class="{element.properties.elementClassAttribute} form-control"
+                        errorClass="{element.properties.elementErrorClassAttribute}"
+                        additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
+                >
+                    <f:render section="options" arguments="{options: element.properties.options}" />
+                </f:form.select>
+            </f:else>
+        </f:if>
+
+    </f:render>
+</formvh:renderRenderable>
+
+
+<f:section name="options">
+    <f:variable name="optGroupOpen" value="0" />
+    <f:for each="{options}" as="option">
+        <f:if condition="{option.isOptgroup}">
+            <f:then>
+                <f:if condition="{optGroupOpen}">
+                    <f:then>
+                        </optgroup>
+                    </f:then>
+                </f:if>
+
+                <f:variable name="optGroupOpen" value="1" />
+                <optgroup label="{option.recipientLabel}">
+
+            </f:then>
+            <f:else>
+                <f:form.select.option value="{option.uid}">{option.recipientLabel}</f:form.select.option>
+            </f:else>
+
+        </f:if>
+    </f:for>
+    <f:if condition="{optGroupOpen} == 1">
+        </optgroup>
+    </f:if>
+
+</f:section>
+</html>

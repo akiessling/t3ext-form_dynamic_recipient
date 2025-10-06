@@ -8,6 +8,7 @@ CREATE TABLE tx_formdynamicrecipient_domain_model_recipient (
 
 	recipient_label varchar(255) DEFAULT '' NOT NULL,
 	recipient_email varchar(255) DEFAULT '' NOT NULL,
+	is_optgroup tinyint(1) DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

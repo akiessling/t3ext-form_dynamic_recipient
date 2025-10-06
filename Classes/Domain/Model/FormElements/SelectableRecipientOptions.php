@@ -28,7 +28,8 @@ class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElemen
                 $cacheDataCollector = $this->getRequest()->getAttribute('frontend.cache.collector');
                 $cacheDataCollector->addCacheTags(new CacheTag('pageId_' . $value));
             }
-            $this->setProperty('options', $this->getOptions($value));
+
+            $this->setProperty('options', $this->getRecipientsFromPid($value));
 
             return;
         }
@@ -38,24 +39,17 @@ class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElemen
 
     /**
      * @param int $pid
-     * @return array
-     */
-    protected function getOptions(int $pid): array
-    {
-        $options = [];
-        foreach ($this->getRecipientsFromPid($pid) as $recipient) {
-            $options[$recipient->getUid()] = $recipient->getRecipientLabel();
-        }
-        return $options;
-    }
-
-    /**
-     * @param int $pid
      * @return \AndreasKiessling\FormDynamicRecipient\Domain\Model\Recipient[]
      */
     protected function getRecipientsFromPid(int $pid): array
     {
-        $RecipientRepository = GeneralUtility::makeInstance(RecipientRepository::class);
-        return $RecipientRepository->findInPid($pid);
+        $recipientRepository = GeneralUtility::makeInstance(RecipientRepository::class);
+        $result = $recipientRepository->findInPid($pid);
+        // set the array index to the value, otherwise the EXT:form internals to show the selected value won't work
+        $options = [];
+        foreach ($result as $recipient) {
+            $options[$recipient->getUid()] = $recipient;
+        }
+        return $options;
     }
 }

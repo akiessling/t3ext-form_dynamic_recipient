@@ -25,6 +25,15 @@ class Recipient extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $recipientEmail = '';
 
+    protected $isOptgroup = false;
+
+    /**
+     * This is important for rendering the option in the summary page and mail
+     */
+    public function __toString(): string
+    {
+        return $this->recipientLabel;
+    }
     /**
      * Returns the recipientLabel
      *
@@ -67,5 +76,13 @@ class Recipient extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->recipientEmail = $recipientEmail;
         return $this;
+    }
+    public function getIsOptgroup(): bool
+    {
+        return $this->isOptgroup;
+    }
+    public function setIsOptgroup(bool $isOptgroup)
+    {
+        $this->isOptgroup = $isOptgroup;
     }
 }

@@ -3,6 +3,10 @@
 	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:form_dynamic_recipient/Resources/Private/Language/Database.xlf" date="2024-04-29T14:07:59Z" product-name="form_dynamic_recipient">
 		<header/>
 		<body>
+			<trans-unit id="formEditor.elements.FormDynamicRecipient.label">
+				<source>Selectable Recipient</source>
+				<target>Auswählbarer Empfänger</target>
+			</trans-unit>
 			<trans-unit id="formEditor.elements.FormDynamicRecipient.pageUid.label" resname="formEditor.elements.FormDynamicRecipient.pageUid.label">
 				<source>Page containing dynamic values</source>
 				<target>Seite mit Empfänger-Datensätzen</target>
