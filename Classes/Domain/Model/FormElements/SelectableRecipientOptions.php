@@ -23,12 +23,12 @@ class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElemen
             if ($value === 0) {
                 $pageArguments = $this->getRequest()->getAttribute('routing');
                 $value = $pageArguments->getPageId();
+            } else {
+                // automatic cache clearing with data handler, if anything in that page changes
+                $cacheDataCollector = $this->getRequest()->getAttribute('frontend.cache.collector');
+                $cacheDataCollector->addCacheTags(new CacheTag('pageId_' . $value));
             }
             $this->setProperty('options', $this->getOptions($value));
-
-            // automatic cache clearing with data handler, if anything in that page changes
-            $cacheDataCollector = $this->getRequest()->getAttribute('frontend.cache.collector');
-            $cacheDataCollector->addCacheTags(new CacheTag('pageId_' . $value));
 
             return;
         }
