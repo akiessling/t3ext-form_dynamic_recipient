@@ -1,6 +1,6 @@
 <?php
 
-$EM_CONF[$_EXTKEY] = [
+$EM_CONF['form_dynamic_recipient'] = [
     'title' => 'Dynamic form recipient',
     'description' => 'Adds new form select type, which shows recipient records of a given page. This information can be used as dynamic recipient for the form data.',
     'category' => 'plugin',
@@ -8,7 +8,7 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'kontakt@kiessling.tech',
     'author_company' => 'kiessling.tech',
     'state' => 'stable',
-    'version' => '4.0.2',
+    'version' => '4.0.4',
     'constraints' => [
         'depends' => [
             'typo3' => '13.4.0-13.4.99',
