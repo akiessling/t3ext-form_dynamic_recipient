@@ -19,14 +19,27 @@ class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElemen
 
         if ($key === 'pageUid') {
             $value = (int) $value;
+            $request = $this->getRequest();
+
+            // no request available? Might be a backend context, see https://github.com/akiessling/t3ext-form_dynamic_recipient/issues/2
+            if (!$request instanceof \Psr\Http\Message\ServerRequestInterface || !\TYPO3\CMS\Core\Http\ApplicationType::fromRequest($request)->isFrontend()) {
+                // $value might be 0, but we only have the routing info in the frontend context below
+                $this->setProperty('options', $this->getOptions($value));
+                return;
+            }
+
             // use uid of current page if pageUid is not set
             if ($value === 0) {
                 $pageArguments = $this->getRequest()->getAttribute('routing');
-                $value = $pageArguments->getPageId();
+                if ($pageArguments !== null) {
+                    $value = $pageArguments->getPageId();
+                }
             } else {
                 // automatic cache clearing with data handler, if anything in that page changes
                 $cacheDataCollector = $this->getRequest()->getAttribute('frontend.cache.collector');
-                $cacheDataCollector->addCacheTags(new CacheTag('pageId_' . $value));
+                if ($cacheDataCollector !== null) {
+                    $cacheDataCollector->addCacheTags(new CacheTag('pageId_' . $value));
+                }
             }
             $this->setProperty('options', $this->getOptions($value));
 
