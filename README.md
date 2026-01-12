@@ -10,8 +10,26 @@ Use the old release from `extrameile/form-dynamic-recipient` if you need support
 composer require andreaskiessling/form-dynamic-recipient
 ```
 
-## Configuration
+## Setup
 
+The backend module TypoScript should be automatically loaded through ext_localconf.php
+
+### Without Site Sets
+The ext_typoscript_setup.typoscript should provide the yaml inclusion for the frontend output.
+
+### With Site Sets
+Either include the config manually
+```
+@import 'EXT:form_dynamic_recipient/Configuration/TypoScript/setup.typoscript'
+```
+
+or use the provided Set with the dependency for typo3/form
+```
+dependencies:
+  - andreaskiessling/formdynamicrecipient
+```
+
+## Usage
 * Create database records with a label and target email address
 * add a select field of type _Selectable recipient_ to the form, configure the page to load the values from and the variable to fill with the selected value: `dynamicRecipient` is preset when adding the field and is not configurable in the form manager, only directly in the YAML file
 * New with version 3.x: leave the page field empty in the form yaml to load the recipients from the page with the form plugin
