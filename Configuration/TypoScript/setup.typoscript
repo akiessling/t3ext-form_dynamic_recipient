@@ -1,0 +1,7 @@
+plugin.tx_form {
+    settings {
+        yamlConfigurations {
+            1517255631 = EXT:form_dynamic_recipient/Configuration/Yaml/FormSetup.yaml
+        }
+    }
+}

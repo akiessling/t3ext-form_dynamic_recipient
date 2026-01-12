@@ -1,0 +1,4 @@
+name: andreaskiessling/formdynamicrecipient
+label: Form Dynamic Recipient
+dependencies:
+  - typo3/form
