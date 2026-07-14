@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 $EM_CONF['form_dynamic_recipient'] = [
     'title' => 'Dynamic form recipient',
     'description' => 'Adds new form select type, which shows recipient records of a given page. This information can be used as dynamic recipient for the form data.',
@@ -8,11 +10,11 @@ $EM_CONF['form_dynamic_recipient'] = [
     'author_email' => 'kontakt@kiessling.tech',
     'author_company' => 'kiessling.tech',
     'state' => 'stable',
-    'version' => '4.1.0',
+    'version' => '5.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '13.4.0-13.4.99',
-            'form' => '13.4.0-13.4.99',
+            'typo3' => '14.3.0-14.3.99',
+            'form' => '14.3.0-14.3.99',
         ],
     ],
 ];

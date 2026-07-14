@@ -1,4 +1,4 @@
-# Form Dynamic Recipient for EXT:form / TYPO3 13.4
+# Form Dynamic Recipient for EXT:form / TYPO3 14.3
 
 This extension adds simple database records, that can be used to generate a select field in the frontend.
 The selected option can be accessed with an assigned alias and thus be used as a dynamic recipient, e.g. in the _Recipient address_ field.
@@ -12,22 +12,27 @@ composer require andreaskiessling/form-dynamic-recipient
 
 ## Setup
 
-The backend module TypoScript should be automatically loaded through ext_localconf.php
+The form framework configuration is auto-discovered by TYPO3 from
+`EXT:form_dynamic_recipient/Configuration/Form/FormDynamicRecipient/config.yaml`.
 
-### Without Site Sets
-The ext_typoscript_setup.typoscript should provide the yaml inclusion for the frontend output.
-
-### With Site Sets
-Either include the config manually
+The site using the form framework must include the core form Site Set:
 ```
-@import 'EXT:form_dynamic_recipient/Configuration/TypoScript/setup.typoscript'
+dependencies:
+  - typo3/form
 ```
 
-or use the provided Set with the dependency for typo3/form
-```
+### Upgrade to TYPO3 14
+
+The extension's former Site Set is no longer required because TYPO3 14.2 and
+later auto-discover the form framework configuration. Remove the following
+dependency from your site's `config.yaml`:
+
+```yaml
 dependencies:
   - andreaskiessling/formdynamicrecipient
 ```
+
+Keep the `typo3/form` dependency in the site configuration.
 
 ## Usage
 * Create database records with a label and target email address

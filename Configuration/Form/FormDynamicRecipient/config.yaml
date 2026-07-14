@@ -1,3 +1,7 @@
+name: andreaskiessling/form-dynamic-recipient
+label: 'Form Dynamic Recipient'
+priority: 100
+
 prototypes:
   standard:
     formElementsDefinition:
@@ -22,7 +26,6 @@ prototypes:
             properties:
               pageUid: ''
               assignedVariable: 'dynamicRecipient'
-          # add new field which allows selection of a page (= link target)
           editors:
             300:
               identifier: 'pageUid'
@@ -32,7 +35,6 @@ prototypes:
               buttonLabel: 'formEditor.elements.FormDynamicRecipient.pageUid.buttonLabel'
               browsableType: pages
               iconIdentifier: apps-pagetree-page-default
-              # very important setting -> defines the written form definition
               propertyPath: 'properties.pageUid'
               propertyValidatorsMode: 'OR'
               propertyValidators:
@@ -45,5 +47,3 @@ prototypes:
           1517255631: '@andreaskiessling/form-dynamic-recipient/Backend/FormEditor/ViewModel.js'
       translationFiles:
         1517255631: 'EXT:form_dynamic_recipient/Resources/Private/Language/Database.xlf'
-      formEditorPartials:
-        FormElement-FormDynamicRecipient: 'Stage/SelectTemplate'

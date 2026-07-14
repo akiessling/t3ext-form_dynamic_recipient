@@ -2,50 +2,48 @@
 
 declare(strict_types=1);
 
-namespace AndreasKiessling\FormDynamicRecipient\Hooks;
+namespace AndreasKiessling\FormDynamicRecipient\EventListener;
 
 use AndreasKiessling\FormDynamicRecipient\Domain\Model\Recipient;
+use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Validation\Error;
-use TYPO3\CMS\Form\Domain\Model\Renderable\RenderableInterface;
-use TYPO3\CMS\Form\Domain\Runtime\FormRuntime;
+use TYPO3\CMS\Form\Event\BeforeRenderableIsValidatedEvent;
 use TYPO3\CMS\Form\Service\TranslationService;
 
-class FormElementsOnSubmitHooks
+final class FillDynamicRecipientVariablesEventListener
 {
-    private PageRepository $pageRepository;
+    private readonly PageRepository $pageRepository;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->pageRepository = GeneralUtility::makeInstance(PageRepository::class);
     }
 
-    /**
-     * @param \TYPO3\CMS\Form\Domain\Runtime\FormRuntime $formRuntime
-     * @param \TYPO3\CMS\Form\Domain\Model\Renderable\RenderableInterface $renderable
-     * @param $elementValue
-     * @param array $requestArguments
-     * @return mixed
-     * @throws \Exception
-     */
-    public function afterSubmit(FormRuntime $formRuntime, RenderableInterface $renderable, $elementValue, array $requestArguments = [])
+    #[AsEventListener('form-dynamic-recipient/fill-dynamic-recipient-variables')]
+    public function __invoke(BeforeRenderableIsValidatedEvent $event): void
     {
+        $renderable = $event->renderable;
+
         /** @var \AndreasKiessling\FormDynamicRecipient\Domain\Model\FormElements\SelectableRecipientOptions $renderable */
         if ($renderable->getType() === 'FormDynamicRecipient') {
-            $assignedVariable = $renderable->getProperties()['assignedVariable'] ?: 'dynamicRecipient';
+            $formRuntime = $event->formRuntime;
+            $elementValue = $event->value;
+            $assignedVariable = $renderable->getProperties()['assignedVariable'] ?? 'dynamicRecipient';
 
-            $uid = (int) $elementValue;
+            $uid = (int)$elementValue;
 
             if ($uid > 0 && array_key_exists($uid, $renderable->getProperties()['options'])) {
                 $recipient = $this->getRecipient($uid);
-                
+
                 // should not happen, since the TCA field is evaluated to email
                 if (!\is_array($recipient) || !GeneralUtility::validEmail($recipient['recipient_email'])) {
                     throw new \Exception('Invalid email address for recipient detected', 1517428129);
                 }
-                
+
                 $formRuntime->getFormState()->setFormValue($assignedVariable . '.email', $recipient['recipient_email']);
                 $formRuntime->getFormState()->setFormValue($assignedVariable . '.label', $recipient['recipient_label']);
                 // set also name as an alias for label since this is the usual name for the recipient property
@@ -61,8 +59,6 @@ class FormElementsOnSubmitHooks
                 );
             }
         }
-
-        return $elementValue;
     }
 
     /**

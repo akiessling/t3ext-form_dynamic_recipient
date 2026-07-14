@@ -14,7 +14,7 @@ class SelectableRecipientOptions extends \TYPO3\CMS\Form\Domain\Model\FormElemen
      * @param string $key
      * @param mixed $value
      */
-    public function setProperty(string $key, $value)
+    public function setProperty(string $key, $value): void
     {
 
         if ($key === 'pageUid') {
