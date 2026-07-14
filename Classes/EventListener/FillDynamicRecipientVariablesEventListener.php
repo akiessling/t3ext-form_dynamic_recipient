@@ -14,14 +14,13 @@ use TYPO3\CMS\Extbase\Validation\Error;
 use TYPO3\CMS\Form\Event\BeforeRenderableIsValidatedEvent;
 use TYPO3\CMS\Form\Service\TranslationService;
 
-final class FillDynamicRecipientVariablesEventListener
+final readonly class FillDynamicRecipientVariablesEventListener
 {
-    private readonly PageRepository $pageRepository;
-
-    public function __construct()
-    {
-        $this->pageRepository = GeneralUtility::makeInstance(PageRepository::class);
-    }
+    public function __construct(
+        private ConnectionPool $connectionPool,
+        private Context $context,
+        private PageRepository $pageRepository,
+    ) {}
 
     #[AsEventListener('form-dynamic-recipient/fill-dynamic-recipient-variables')]
     public function __invoke(BeforeRenderableIsValidatedEvent $event): void
@@ -68,7 +67,7 @@ final class FillDynamicRecipientVariablesEventListener
      */
     private function getRecipient($uid)
     {
-        $row = GeneralUtility::makeInstance(ConnectionPool::class)
+        $row = $this->connectionPool
             ->getConnectionForTable(Recipient::TABLE)
             ->select(
                 ['*'],
@@ -84,7 +83,7 @@ final class FillDynamicRecipientVariablesEventListener
             $this->pageRepository->versionOL(Recipient::TABLE, $row, true);
 
             // Language overlay:
-            $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
+            $languageAspect = $this->context->getAspect('language');
             if (is_array($row) && $languageAspect->getContentId() > 0) {
                 $row = $this->pageRepository->getLanguageOverlay(
                     Recipient::TABLE,
