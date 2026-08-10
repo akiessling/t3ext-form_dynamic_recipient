@@ -3,7 +3,7 @@
     "type": "typo3-cms-extension",
     "description": "Adds new form select type, which shows recipient records of a given page. This information can be used as dynamic recipient for the form data.",
     "homepage": "https://kiessling.tech",
-    "license": ["GPL-2.0+"],
+    "license": ["GPL-2.0-or-later"],
     "authors": [
         {
             "name": "Andreas Kießling",
@@ -13,8 +13,9 @@
         }
     ],
     "require": {
-        "typo3/cms-core": "^13.4",
-        "typo3/cms-form": "^13.4"
+        "typo3/cms-core": "^14.3",
+        "typo3/cms-extbase": "^14.3",
+        "typo3/cms-form": "^14.3"
     },
     "scripts": {
         "phpstan": "phpstan analyse --memory-limit=1G --configuration=Build/phpstan.neon",
@@ -42,7 +43,7 @@
         }
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.10",
-        "saschaegerer/phpstan-typo3": "^1.8.4"
+        "phpstan/phpstan": "^2.2",
+        "saschaegerer/phpstan-typo3": "^3.0"
     }
 }

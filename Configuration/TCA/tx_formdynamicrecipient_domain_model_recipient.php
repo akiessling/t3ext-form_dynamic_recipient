@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:form_dynamic_recipient/Resources/Private/Language/locallang_db.xlf:tx_formdynamicrecipient_domain_model_recipient',
@@ -19,7 +21,6 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'recipient_label,recipient_email',
         'iconfile' => 'EXT:form_dynamic_recipient/Resources/Public/Icons/Recipient.svg',
         'security' => [
             'ignorePageTypeRestriction' => true,
@@ -63,6 +64,7 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
+                'searchable' => false,
             ],
         ],
         'hidden' => [
@@ -72,8 +74,8 @@ return [
                 'type' => 'check',
                 'items' => [
                     [
-                        'value' => 1,
                         'label' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled',
+                        'value' => 1,
                     ],
                 ],
             ],
@@ -87,6 +89,7 @@ return [
                 'format' => 'datetime',
                 'size' => 13,
                 'default' => 0,
+                'searchable' => false,
             ],
         ],
         'endtime' => [
@@ -101,6 +104,7 @@ return [
                 'range' => [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038)
                 ],
+                'searchable' => false,
             ],
         ],
 
